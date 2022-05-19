@@ -5,22 +5,32 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.film{
+.film-options>a{
+    text-decoration: none;
+    height: -moz-fit-content;
+    width: 46%;   
+}
+
+a>.film{
     box-shadow: 0px 2px 4px 2px
     rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     background-color:  #FFFFFF;
     height: -moz-fit-content;
-    width: 46%;
+    width: 100%;
     margin-bottom: 11px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:2% 0;
+    padding:5% 0;
 }
 
-.film>img{
+a>.film>img{
     width:90%;
     height:90%;
     object-fit: cover;
+}
+
+a{
+    text-decoration: none;
 }

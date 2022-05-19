@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import ImageFilm from "../../shared/ImageFilm";
-import {gif} from "./../../Assets/Images/loading.gif";
+import gif from "./../../Assets/Images/loading.gif";
 import "./style.css";
 
-//let loadingGif = require("../../Assets/Images/loading.gif");
 
 export default function FilmList () {
     const [list,setList]=useState(null);
@@ -16,6 +15,8 @@ export default function FilmList () {
         .catch(()=>(<h5>"Deu erro na PROMISE"</h5>))
     },[]);
 
+    
+
 
     return (
     <>
@@ -24,8 +25,14 @@ export default function FilmList () {
          <img src={gif} alt="loading gif" />
         :
         <ul className="film-options">
-                {list.map(item=><ImageFilm key={item.id} source={item.posterURL}/>)}
+                {list.map(item=>{
+                    return(
+                        <Link to={`/filme/${item.id}`} key={item.id}>
+                            <ImageFilm source={item.posterURL}/>
+                        </Link>);
+                })}
         </ul> }
+
     </>
     );
 }
