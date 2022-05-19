@@ -11,5 +11,6 @@ export default function ScheduleOptions({title,posterURL,days}){
 const Sessions = styled.div`
     width:100%;
     padding:0 6%;
+    margin-bottom: 117px;
 `;
 

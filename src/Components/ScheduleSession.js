@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams} from "react-router-dom";
 
 import ScheduleOptions from "./ScheduleOptions";
+import Footer from "./Footer";
 import loadingGif from "./../Assets/Images/loading.gif"
 
 export default function ScheduleSession(){
@@ -29,6 +30,9 @@ export default function ScheduleSession(){
             (<main>
                 <h2>Selecione o horário</h2>
                 <ScheduleOptions title={sessions.title} posterURL={sessions.posterURL} days={sessions.days}/>
+                <Footer posterURL={sessions.posterURL}>
+                    <h2>{sessions.title}</h2>
+                </Footer>
             </main>)
 
             }
