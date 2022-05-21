@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import ImageFilm from "../../shared/ImageFilm";
-import gif from "./../../Assets/Images/loading.gif";
-import "./style.css";
+import ImageFilm from "../shared/ImageFilm";
+import gif from "../Assets/Images/loading.gif";
+
 
 
 export default function FilmList () {

@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
-import Header from "./Header/Header"
-import FilmSelection from "./FilmSelection/FilmSelection";
+import Header from "./Header"
+import FilmSelection from "./FilmSelection";
 import ScheduleSession from "./ScheduleSession";
 import ChooseSeat from "./ChooseSeat";
 import Sucess from "./Sucess";

@@ -1,6 +1,4 @@
-import "./style.css"
-
-import FilmList from "../FilmList/FilmList"
+import FilmList from "./FilmList"
 
 export default function FilmSelection(){
     return (
