@@ -1,14 +1,13 @@
 import {useState} from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
-import Sucess from "./Sucess";
 
 export default function Forms({data,seats}){    
     const [name,setName]=useState("");
     const [cpf,setCpf]=useState("");
-    const [namesSelected,setNamesSelected]=useState([]);
+    const [,setNamesSelected]=useState([]);
     const navigate=useNavigate();
    
     function CpfFormat(string){

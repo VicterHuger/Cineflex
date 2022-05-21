@@ -35,7 +35,6 @@ const Header=styled.h2`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom:25px;
 `;
 const Subheader=styled.h2`
     font-size: 24px;
@@ -52,7 +51,7 @@ padding:0 7.5%;
 width:100%;
 display:flex;
 flex-direction:column;
-margin-bottom:50px;
+margin-bottom:30px;
 +a{
     width:100%;
 }
@@ -61,6 +60,7 @@ margin-bottom:50px;
 const Title=styled.h3`
 font-size:22px;
 color:#293845;
+margin-bottom:5px;
 `
 const Button=styled.button`
 border:none;
@@ -73,5 +73,5 @@ align-items:center;
 font-size:18px;
 height:42px;
 width:60%;
-margin:70px auto;
+margin:40px auto;
 `
