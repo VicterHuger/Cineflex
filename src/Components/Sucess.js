@@ -20,6 +20,10 @@ export default function Sucess(){
                 <Title>{`Nome: ${location.state.name}`}</Title>
                 <Title>{`CPF: ${location.state.CPF}`}</Title>
             </Container>
+            <Link to="/">
+                <Button>Voltar pra Home</Button>
+            </Link>
+            
         </main>
     )
 }
@@ -49,9 +53,25 @@ width:100%;
 display:flex;
 flex-direction:column;
 margin-bottom:50px;
++a{
+    width:100%;
+}
 `;
 
 const Title=styled.h3`
 font-size:22px;
 color:#293845;
+`
+const Button=styled.button`
+border:none;
+border-radius:3px;
+background-color:#E8833A;
+color:#FFFFFF;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:18px;
+height:42px;
+width:60%;
+margin:70px auto;
 `
