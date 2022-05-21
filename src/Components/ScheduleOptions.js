@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import DayOption from "./DayOption";
-export default function ScheduleOptions({title,posterURL,days}){
+export default function ScheduleOptions({days}){
     return (
         <Sessions>
                 {days.map(day=> <DayOption key={day.id} weekday={day.weekday} date={day.date} showtimes={day.showtimes}/>)}

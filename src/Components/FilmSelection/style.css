@@ -2,7 +2,7 @@ main{
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
-    margin:67px auto 0 auto;
+    margin:67px auto 117px auto;
     align-items: center;
 }
 main>h2{

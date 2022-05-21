@@ -18,12 +18,14 @@ const Button=styled.button`
     height:43px;
     width:100%;
     border:none; 
+    
     &:hover{
         cursor:pointer;
         filter: brightness(1.25);
         transform: translateY(-2px);
         animation: all linear 500ms;
     }
+    
     h4{
         font-size:18px;
         color:#FFFFFF;

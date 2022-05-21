@@ -4,6 +4,7 @@ import Header from "./Header/Header"
 import FilmSelection from "./FilmSelection/FilmSelection";
 import ScheduleSession from "./ScheduleSession";
 import ChooseSeat from "./ChooseSeat";
+import Sucess from "./Sucess";
 
 export default function App(){
     return (
@@ -13,6 +14,7 @@ export default function App(){
                 <Route path="/" element={<FilmSelection/>}> </Route>
                 <Route path="/filme/:idFilm" element={<ScheduleSession />}> </Route>
                 <Route path="/sessao/:idSession" element={<ChooseSeat /> } > </Route>
+                <Route path="/sucesso" element={<Sucess/>}> </Route>
             </Routes>
         </BrowserRouter>
     )
