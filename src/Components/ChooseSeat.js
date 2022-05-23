@@ -10,10 +10,12 @@ import Footer from "./Footer";
 
 import loadingGIF from "./../Assets/Images/loading.gif"
 
-export default function ChooseSeat(){
+export default function ChooseSeat({UpdateHeader}){
+    const path=window.location.pathname;
     const {idSession}=useParams();
     const [seats,setSeats]=useState(null);
     const [data,setData]=useState(null);
+    UpdateHeader(path);
     // const [color,setColor]=useState("#C3CFD9");
     // const [border,setBorder]=useState("#808F9D");
     // const [selected,setSelected]=useState(false);
@@ -40,7 +42,7 @@ export default function ChooseSeat(){
                 return {...seat, colorName: color, borderName: border, isSelected:selected}}
                 ))})
         .catch(()=><h2>Erro na Promise</h2>);
-    },[]);
+    },[idSession]);
 
     function ChangeStatus(index){
         const newSeats=[...seats];

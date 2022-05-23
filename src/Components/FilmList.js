@@ -7,8 +7,10 @@ import gif from "../Assets/Images/loading.gif";
 
 
 
-export default function FilmList () {
+export default function FilmList ({UpdateHeader}) {
     const [list,setList]=useState(null);
+    const path=window.location.pathname;
+    UpdateHeader(path);
     useEffect(()=>{
         axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
         .then(response=>setList([...response.data]))

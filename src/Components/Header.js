@@ -1,8 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-export default function Header(){
+
+export default function Header({header}){
+    const navigate=useNavigate();
+
+    
     return (
         <HeaderStyle>
-            <h1>CINEFLIX</h1>
+            {!header ?
+            (<h1>CINEFLIX</h1>)
+            
+            :
+            (<div>
+                <ion-icon onClick={() => navigate(-1)} name="arrow-back-circle"></ion-icon>
+                <h1>CINEFLIX</h1>
+            </div>)
+            }
         </HeaderStyle>
     )
 }
@@ -17,9 +30,32 @@ const HeaderStyle=styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    &>h1{
+    &>div>h1, &>h1{
         color:#E8833A;
         font-size: 34px;
     }
+    &>div>ion-icon{
+        background-color:none;
+        color:#E8833A;
+        position:absolute;
+        left:5%;
+        font-size:34px;
+
+    }
+    &>div>ion-icon:hover{
+        cursor: pointer;
+        filter:brightness(1.1);
+        transform: translateY(-2px);
+        animation: all linear 500ms;
+    
+    }
 `;
+// const Container=styled.div`
+//     display:flex;
+//     justify-content:center;
+//     align-items:center;
+//     position:relative;
+// `
+
+
 

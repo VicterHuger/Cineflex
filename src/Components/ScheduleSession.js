@@ -6,16 +6,19 @@ import ScheduleOptions from "./ScheduleOptions";
 import Footer from "./Footer";
 import loadingGif from "./../Assets/Images/loading.gif"
 
-export default function ScheduleSession(){
+export default function ScheduleSession({UpdateHeader}){
 
     const {idFilm}=useParams();
     const [sessions,setSessions]=useState(null);
+    const path=window.location.pathname;
+
+    UpdateHeader(path);
 
     useEffect( () => {
         axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilm}/showtimes`)
             .then(response=>setSessions({...response.data})  )
             .catch(()=> <h5>Erro na promise</h5>)
-    },[] );
+    },[idFilm] );
     
     return (
         <>
