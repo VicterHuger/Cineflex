@@ -33,7 +33,6 @@ export default function Forms({data,seats}){
             let selectedName=[];
             const selectedIds=[];
             const CPF=CpfFormat(cpf);
-            console.log(CPF);
             seats.filter(seat=>seat.isSelected===true).forEach((seat)=>selectedName.push(seat.name));
             selectedName=selectedName.sort();
             seats.filter(seat=>seat.isSelected===true).forEach((seat)=>selectedIds.push(seat.id));
@@ -43,14 +42,13 @@ export default function Forms({data,seats}){
                 name,
                 CPF
             };
-            
             const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",body);
-            promise.then(res=>{ console.log(res); return navigate('/sucesso',{state:{title:data.movie.title,day:data.day.date,hour:data.name, seat:selectedName, name, CPF }})} )
-            .catch(err=>console.log(err));
+            promise.then(res=>{ return navigate('/sucesso',{state:{title:data.movie.title,day:data.day.date,hour:data.name, seat:selectedName, name, CPF }})} )
+            .catch(err=><h5>Infelizmente não foi possível realizar seu agendamento</h5>);
             
-        }else if(patternname.test(name)===false){
+        }else if(patternname.test(name)===false || name===""){
             alert("Digite um nome válido!");
-        }else if(patterncpf.test(cpf)===false){
+        }else if(patterncpf.test(cpf)===false || cpf=== ""){
             alert("Digite um CPF válido!");
         }
         

@@ -1,9 +1,9 @@
 import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
+
 export default function Sucess({UpdateHeader}){
     const location=useLocation();
     const path=window.location.pathname;
-    console.log(location.state);
     UpdateHeader(path);
     return(
         <main>
