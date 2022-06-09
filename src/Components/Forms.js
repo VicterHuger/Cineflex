@@ -4,9 +4,12 @@ import axios from "axios";
 import styled from "styled-components";
 
 
+
 export default function Forms({data,seats}){    
     const [name,setName]=useState("");
+    // const [names,setNames]=useState([]);
     const [cpf,setCpf]=useState("");
+    // const [cpfs,setCpfs]=useState([]);
     const [,setNamesSelected]=useState([]);
     const navigate=useNavigate();
    
@@ -23,36 +26,61 @@ export default function Forms({data,seats}){
         return newCPF;
     }
 
-    function FinishRequest(e){
-        const patterncpf=/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/;
+    function verifyInputName(){
         const patternname=/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-        ;
-        e.preventDefault();
-        
-        if(patternname.test(name)===true && patterncpf.test(cpf)===true){
-            let selectedName=[];
-            const selectedIds=[];
+        return patternname.test(name)===true;
+    }
+
+    function verifyInputCPF(){
+        const patterncpf=/^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}/;
+        return patterncpf.test(cpf)===true;
+    }
+
+    function createBodyToPostRequest(){
+        let selectedName=[];
+        const selectedIds=[];
             const CPF=CpfFormat(cpf);
             seats.filter(seat=>seat.isSelected===true).forEach((seat)=>selectedName.push(seat.name));
             selectedName=selectedName.sort();
             seats.filter(seat=>seat.isSelected===true).forEach((seat)=>selectedIds.push(seat.id));
             setNamesSelected(selectedName);
-            const body={
+            return [selectedName,{
                 ids:selectedIds,
                 name,
                 CPF
-            };
-            const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",body);
-            promise.then(res=>{ return navigate('/sucesso',{state:{title:data.movie.title,day:data.day.date,hour:data.name, seat:selectedName, name, CPF }})} )
-            .catch(err=><h5>Infelizmente não foi possível realizar seu agendamento</h5>);
+            }];    
+    }
+    function generateStateInfo(body,selectedName){
+        
+            return {
+                title:data.movie.title,
+                day:data.day.date,
+                hour:data.name,
+                seat:selectedName, 
+                name:body.name, 
+                CPF: body.CPF }
             
-        }else if(patternname.test(name)===false || name===""){
+    }
+    function FinishRequest(e){
+    
+        e.preventDefault();
+        
+        if(verifyInputName() && verifyInputCPF()){
+            const [selectedName,body]=createBodyToPostRequest();
+
+            const promise=axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",body);
+
+            promise.then( () => {
+                const stateInfo=generateStateInfo(body,selectedName);
+                return navigate('/sucesso',{state:stateInfo})
+            });
+            promise.catch(err=>alert(err.response.data.message));
+            
+        }else if(!verifyInputName() || name===""){
             alert("Digite um nome válido!");
-        }else if(patterncpf.test(cpf)===false || cpf=== ""){
+        }else if(!verifyInputCPF() || cpf=== ""){
             alert("Digite um CPF válido!");
         }
-        
-        
     }
 
     return (

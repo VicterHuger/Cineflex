@@ -16,10 +16,6 @@ export default function ChooseSeat({UpdateHeader}){
     const [seats,setSeats]=useState(null);
     const [data,setData]=useState(null);
     UpdateHeader(path);
-    // const [color,setColor]=useState("#C3CFD9");
-    // const [border,setBorder]=useState("#808F9D");
-    // const [selected,setSelected]=useState(false);
-    // const [selected,setSelected]=([]);
     
     
     useEffect(()=>{
